@@ -10,4 +10,5 @@ void Task(int *array, int *size, int *B)
             ++current;
         }
     }
+    *size = current;
 }
