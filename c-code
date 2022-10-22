@@ -1,0 +1,33 @@
+void PolNum(int *a, int size)
+{
+    int b[size];
+    int position = 0;
+    int i;
+    for (i = 0; i < size; i++)
+    {
+        if (a[i] > 0)
+        {
+            b[position] = i;
+            position++;
+        }
+    }
+    for (i = 0; i < position; i++)
+        printf("%d ", b[i]); // пробел в формате печати обязателен
+}
+
+int main()
+{
+    int a[5]; // объявлен массив a из 5 элементов
+              // объявлен массив a из 5 элементов
+    int i = 0;
+
+    // Ввод элементов массива
+    for (; i < 5; i++)
+    {
+        scanf("%d", &a[i]); // &a[i] - адрес i-го элемента массива
+    }
+    PolNum(a, 5);
+    // Вывод элементов массива
+
+    return 0;
+}
