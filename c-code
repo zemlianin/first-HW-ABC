@@ -1,19 +1,4 @@
-void PolNum(int *a, int size)
-{
-    int b[size];
-    int position = 0;
-    int i;
-    for (i = 0; i < size; i++)
-    {
-        if (a[i] > 0)
-        {
-            b[position] = i;
-            position++;
-        }
-    }
-    for (i = 0; i < position; i++)
-        printf("%d ", b[i]); // пробел в формате печати обязателен
-}
+extern int Task(int *array, int *size, int *B);
 
 int main()
 {
@@ -26,8 +11,6 @@ int main()
     {
         scanf("%d", &a[i]); // &a[i] - адрес i-го элемента массива
     }
-    PolNum(a, 5);
-    // Вывод элементов массива
 
     return 0;
 }
