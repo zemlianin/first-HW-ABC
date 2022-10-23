@@ -40,8 +40,8 @@ main:
 	mov	rbp, rsp
 	sub	rsp, 896
 	
-	mov	DWORD PTR -884[rbp], edi 	# Получение параметра размера массива
-	mov	QWORD PTR -896[rbp], rsi 	# Получение параметра указателя на массив
+	mov r8d, edi 	# Получение параметра размера массива
+	mov	r9, rsi 	# Получение параметра указателя на массив
 
 	lea	rdi, .LC0[rip] 			# Запись строки в регистр
 	call	puts@PLT 			# Запуск метода принт, вывод строки из регистра
@@ -69,7 +69,7 @@ main:
 	lea	rdi, .LC5[rip]
 	call	fopen@PLT 			# Запись строк как параметров в регистры и вызов метода открытия потока\
 	
-	mov	QWORD PTR -24[rbp], rax 
+	mov r12, rax 
 	mov	DWORD PTR -4[rbp], 0 # i = 0
 	jmp	.L3
 .L4:
@@ -78,7 +78,7 @@ main:
 	sal	rax, 2
 	add	rdx, rax   			#  Расчет адреса текущего элемента массива
 	
-	mov	rdi, QWORD PTR -24[rbp] 	# Запись параметров метода скан в регистры, строка и указатель
+	mov	rdi, r12 	# Запись параметров метода скан в регистры, строка и указатель
 	lea	rsi, .LC1[rip]
 	mov	eax, 0
 	call	__isoc99_fscanf@PLT 		#  Запуск метода скан
@@ -125,12 +125,12 @@ main:
 	mov	eax, 0
 	call	__isoc99_scanf@PLT		# Вызов метода скан
 	
-	cmp	DWORD PTR -884[rbp], 1		# Сравнение парамметра мметода мэйн с 1
+	cmp r8d, 1		# Сравнение парамметра мметода мэйн с 1
 	jne	.L9				
 	mov	BYTE PTR -865[rbp], 48		# Запись нолика в переменную параметр  рандома
 	jmp	.L10
 .L9:
-	mov	rax, QWORD PTR -896[rbp]	# Получение ссылки на массив
+	mov	rax, r9	# Получение ссылки на массив
 	mov	rax, QWORD PTR [rax]		# Получение элемента массива
 	movzx	eax, BYTE PTR 1[rax]
 	mov	BYTE PTR -865[rbp], al		# Запись полученного значения в перемменную
@@ -152,7 +152,7 @@ main:
 	lea	rdi, .LC5[rip]
 	call	fopen@PLT
 	
-	mov	QWORD PTR -24[rbp], rax	
+	mov r12, rax	
 		
 	lea	rsi, .LC7[rip]			# Открытие потока на запись
 	lea	rdi, .LC8[rip]
@@ -171,7 +171,7 @@ main:
 	sal	rax, 2
 	add	rdx, rax
 	
-	mov	rdi, QWORD PTR -24[rbp]		# Запуск метода скан
+	mov	rdi, r12		# Запуск метода скан
 	lea	rsi, .LC1[rip]
 	mov	eax, 0
 	call	__isoc99_fscanf@PLT
@@ -183,7 +183,7 @@ main:
 	jl	.L14				# Если параметр меньше прыжок в точку 14
 	
 	call	clock@PLT			# Вызов метода клок
-	mov	QWORD PTR -40[rbp], rax		# Запись результата выполнения функции в стэк
+	mov	r13, rax		# Запись результата выполнения функции в стэк
 	
 	lea	rdx, -848[rbp]			# Вызов функции таск
 	lea	rsi, -864[rbp]			# Запись переменных в регистры
@@ -191,11 +191,11 @@ main:
 	call	Task@PLT
 	
 	call	clock@PLT			# Вызов функции клок
-	mov	QWORD PTR -48[rbp], rax		# Запись результата в стэк
+	mov	r14, rax		# Запись результата в стэк
 	
-	mov	rax, QWORD PTR -48[rbp]		# Запись конечного момента времени в регистр
+	mov	rax, r14		# Запись конечного момента времени в регистр
 	mov	edx, eax			
-	mov	rax, QWORD PTR -40[rbp]		# Запись начального момента времени в регистр
+	mov	rax, r13	# Запись начального момента времени в регистр
 	mov	ecx, eax
 	mov	eax, edx
 	sub	eax, ecx			# Получение разности значений
@@ -206,9 +206,9 @@ main:
 	mov	eax, 0
 	call	fprintf@PLT
 	
-	mov	rax, QWORD PTR -48[rbp]		# Запись конечного момента времени в регистр
+	mov	rax, r14		# Запись конечного момента времени в регистр
 	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]		# Запись начального момента времени в регистр
+	mov	rax, r13		# Запись начального момента времени в регистр
 	mov	ecx, eax
 	mov	eax, edx
 	sub	eax, ecx			# Получение Разности моментов времени

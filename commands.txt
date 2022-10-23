@@ -1,4 +1,0 @@
-gcc ./Main.c -c -o ./Main.o
-gcc ./func.c -c -o ./func.o
-gcc ./Main.o ./func.o -o ./solution.exe
-./solution.exe
