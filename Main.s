@@ -101,7 +101,8 @@ main:
 	mov	eax, DWORD PTR -4[rbp] 		# Запись параметра цикла в регистр
 	
 	sal	rax, 2 				# расчет адреса текущего элемента массива
-	add	rsi, rdx
+	add	rax, rdx
+	mov	rsi, rax
 	
 	lea	rdi, .LC1[rip] 			# Запись строки в регистр
 	mov	eax, 0
