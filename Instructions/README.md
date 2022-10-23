@@ -108,6 +108,7 @@ mov	rdi, rax
 ### 3. Повсеместное удаление макроса cdqe
 ### 4. Удаление макроса endbr64
 ### 5. Оптимизация за счет хранения некторых переменных стека в регистре, среди которых:
+## Main.s:
 * arcs -> r8d
 * argv[] -> r9
 * *input -> r12
@@ -116,5 +117,8 @@ mov	rdi, rax
 * i - неудается заменить, Segmentation fault (core dumped)
 * command - неудается заменить, Segmentation fault (core dumped)
 * size - неудается заменить, Segmentation fault (core dumped)
-
+## func.s:
+* *A -> r14
+* *B -> r15
+* size -> неудается заменить, Segmentation fault (core dumped)
 
